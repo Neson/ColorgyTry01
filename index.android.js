@@ -12,20 +12,57 @@ var {
   View,
 } = React;
 
+import ScrollableTabView from './app/components/ScrollableTabView';
+
 var ColorgyTryA = React.createClass({
   render: function() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <ScrollableTabView color="#fff" activeColor="#ff7f00" backgroundColor="#26caa0">
+        <View style={styles.container} tabLabel="This">
+          <Text style={styles.welcome}>
+            Welcome to React Native! Yo!
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit index.android.js
+          </Text>
+          <Text style={styles.instructions}>
+            Shake or press menu button for dev menu
+          </Text>
+        </View>
+        <View style={styles.container} tabLabel="That">
+          <Text style={styles.welcome}>
+            Welcome to React Native! Yo!
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit index.android.js
+          </Text>
+          <Text style={styles.instructions}>
+            Shake or press menu button for dev menu
+          </Text>
+        </View>
+        <View style={styles.container} tabLabel="Other">
+          <Text style={styles.welcome}>
+            Welcome to React Native! Yo!
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit index.android.js
+          </Text>
+          <Text style={styles.instructions}>
+            Shake or press menu button for dev menu
+          </Text>
+        </View>
+        <View style={styles.container} tabLabel="Another">
+          <Text style={styles.welcome}>
+            Welcome to React Native! Yo!
+          </Text>
+          <Text style={styles.instructions}>
+            To get started, edit index.android.js
+          </Text>
+          <Text style={styles.instructions}>
+            Shake or press menu button for dev menu
+          </Text>
+        </View>
+      </ScrollableTabView>
     );
   }
 });
