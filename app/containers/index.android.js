@@ -7,6 +7,8 @@ import React, {
 } from 'react-native';
 import { connect } from 'react-redux/native';
 import MK, { MKButton, MKColor } from 'react-native-material-kit';
+import FBLogin from 'react-native-facebook-login';
+
 
 import ScrollableTabView from '../components/ScrollableTabView';
 import { testPlus } from '../actions/testActions';
@@ -43,6 +45,34 @@ var AppContainer = React.createClass({
             <Text style={styles.instructions}>
               {this.props.count}
             </Text>
+            <FBLogin style={{ marginBottom: 10, }}
+              permissions={["email","user_friends"]}
+              onLogin={function(data){
+                console.log("Logged in!");
+                console.log(data);
+              }}
+              onLogout={function(){
+                console.log("Logged out.");
+              }}
+              onLoginFound={function(data){
+                console.log("Existing login found.");
+                console.log(data);
+              }}
+              onLoginNotFound={function(){
+                console.log("No user logged in.");
+              }}
+              onError={function(data){
+                console.log("ERROR");
+                console.log(data);
+              }}
+              onCancel={function(){
+                console.log("User cancelled.");
+              }}
+              onPermissionsMissing={function(data){
+                console.log("Check permissions!");
+                console.log(data);
+              }}
+            />
           </View>
           <View elevation={3} style={styles.container} tabLabel="活動">
             <Text style={styles.welcome}>
