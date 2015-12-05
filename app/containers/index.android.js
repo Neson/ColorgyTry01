@@ -6,26 +6,45 @@ import React, {
   ToolbarAndroid
 } from 'react-native';
 import { connect } from 'react-redux/native';
+import MK, { MKButton, MKColor } from 'react-native-material-kit';
 
 import ScrollableTabView from '../components/ScrollableTabView';
+import { testPlus } from '../actions/testActions';
 
 var AppContainer = React.createClass({
+
+  _handleCountAdd: function() {
+    this.props.dispatch(testPlus());
+  },
+
   render: function() {
     return (
       <View>
         <ScrollableTabView color="#fff" activeColor="#ff7f00" backgroundColor="#26caa0">
           <View style={styles.container} tabLabel="課表">
             <Text style={styles.welcome}>
-              Welcome to React Native! Yo! Ya!
+              This is a counter using Redux!
             </Text>
+            <View style={{ padding: 10 }}>
+              <MKButton
+                backgroundColor={MKColor.Teal}
+                shadowRadius={2}
+                shadowOffset={{width:0, height:2}}
+                shadowOpacity={.7}
+                shadowColor="black"
+                onPress={this._handleCountAdd}
+              >
+                <Text pointerEvents="none"
+                      style={{ color: 'white', fontWeight: 'bold' }}>
+                  PRESS ME TO COUNT
+                </Text>
+              </MKButton>
+            </View>
             <Text style={styles.instructions}>
-              To get started, edit index.android.js
-            </Text>
-            <Text style={styles.instructions}>
-              Shake or press menu button for dev menu
+              {this.props.count}
             </Text>
           </View>
-          <View style={styles.container} tabLabel="活動">
+          <View elevation={3} style={styles.container} tabLabel="活動">
             <Text style={styles.welcome}>
               Welcome to React Native! Yo!
             </Text>
