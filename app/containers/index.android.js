@@ -8,7 +8,7 @@ import React, {
 import { connect } from 'react-redux/native';
 import MK, { MKButton, MKColor } from 'react-native-material-kit';
 import FBLogin from 'react-native-facebook-login';
-
+import StatusBarAndroid from 'react-native-android-statusbar';
 
 import ScrollableTabView from '../components/ScrollableTabView';
 import { testPlus } from '../actions/testActions';
@@ -22,6 +22,12 @@ var AppContainer = React.createClass({
 
   _handleTestLogin: function() {
     colorgyAPI.requestAccessToken({ username: 'pkc@pokaichang.com', password: 'qazwsxedc' });
+  },
+
+  _handleTestStatusBar: function() {
+    let colors = ['#B71C1C', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47A1', '#01579B', '#006064', '#004D40', '#E65100', '#3E2723', '#BF360C', '#263238'];
+    var color = colors[Math.floor(Math.random()*colors.length)];
+    StatusBarAndroid.setHexColor(color);
   },
 
   render: function() {
@@ -59,6 +65,21 @@ var AppContainer = React.createClass({
                 <Text pointerEvents="none"
                       style={{ color: 'white', fontWeight: 'bold' }}>
                   PRESS ME TO TEST LOGIN
+                </Text>
+              </MKButton>
+            </View>
+            <View style={{ padding: 10 }}>
+              <MKButton
+                backgroundColor={MKColor.Teal}
+                shadowRadius={2}
+                shadowOffset={{width:0, height:2}}
+                shadowOpacity={.7}
+                shadowColor="black"
+                onPress={this._handleTestStatusBar}
+              >
+                <Text pointerEvents="none"
+                      style={{ color: 'white', fontWeight: 'bold' }}>
+                  PRESS ME TO CHANGE STATUS BAR COLOR
                 </Text>
               </MKButton>
             </View>

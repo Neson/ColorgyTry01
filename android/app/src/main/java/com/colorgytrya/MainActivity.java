@@ -12,6 +12,7 @@ import com.facebook.react.shell.MainReactPackage;
 import android.content.Intent;
 import org.pgsqlite.SQLitePluginPackage;
 import com.magus.fblogin.FacebookLoginPackage;
+import me.neo.react.StatusBarPackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
 import com.facebook.soloader.SoLoader;
 
@@ -36,6 +37,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .addPackage(new MainReactPackage())
                 .addPackage(new SQLitePluginPackage(this))
                 .addPackage(mFacebookLoginPackage)
+                .addPackage(new StatusBarPackage(this))
                 .addPackage(new ReactMaterialKitPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
