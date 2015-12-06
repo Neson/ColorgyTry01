@@ -12,11 +12,16 @@ import FBLogin from 'react-native-facebook-login';
 
 import ScrollableTabView from '../components/ScrollableTabView';
 import { testPlus } from '../actions/testActions';
+import colorgyAPI from '../utils/colorgyAPI';
 
 var AppContainer = React.createClass({
 
   _handleCountAdd: function() {
     this.props.dispatch(testPlus());
+  },
+
+  _handleTestLogin: function() {
+    colorgyAPI.requestAccessToken({ username: 'pkc@pokaichang.com', password: 'qazwsxedc' });
   },
 
   render: function() {
@@ -39,6 +44,21 @@ var AppContainer = React.createClass({
                 <Text pointerEvents="none"
                       style={{ color: 'white', fontWeight: 'bold' }}>
                   PRESS ME TO COUNT
+                </Text>
+              </MKButton>
+            </View>
+            <View style={{ padding: 10 }}>
+              <MKButton
+                backgroundColor={MKColor.Teal}
+                shadowRadius={2}
+                shadowOffset={{width:0, height:2}}
+                shadowOpacity={.7}
+                shadowColor="black"
+                onPress={this._handleTestLogin}
+              >
+                <Text pointerEvents="none"
+                      style={{ color: 'white', fontWeight: 'bold' }}>
+                  PRESS ME TO TEST LOGIN
                 </Text>
               </MKButton>
             </View>
