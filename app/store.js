@@ -1,6 +1,9 @@
+import { AsyncStorage } from 'react-native';
 import { compose, createStore, applyMiddleware } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import reducers from './reducers';
 
+import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 const loggerMiddleware = createLogger({
@@ -9,18 +12,17 @@ const loggerMiddleware = createLogger({
   predicate: (getState, action) => true
 });
 
-import thunkMiddleware from 'redux-thunk';
+const createStoreWithMiddleware = applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware
+)(createStore);
 
-const createPersistentStore = compose(
-  createStore
-);
+let store = autoRehydrate()(createStoreWithMiddleware)(reducers);
 
-const createPersistentStoreWithMiddleware = applyMiddleware(
-  loggerMiddleware,
-  thunkMiddleware
-)(createPersistentStore);
-
-let store = createPersistentStoreWithMiddleware(reducers);
+persistStore(store, {
+  storage: AsyncStorage,
+  whitelist: ['colorgyAPI']
+});
 
 if (window) window.store = store;
 
