@@ -10,6 +10,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import android.content.Intent;
+import org.pgsqlite.SQLitePluginPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
 import com.facebook.soloader.SoLoader;
@@ -33,6 +34,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new SQLitePluginPackage(this))
                 .addPackage(mFacebookLoginPackage)
                 .addPackage(new ReactMaterialKitPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)

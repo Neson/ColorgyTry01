@@ -4,6 +4,8 @@ import { Provider } from 'react-redux/native';
 import store from './store';
 import AppContainer from './containers';
 
+import courseDatabase from './databases/courseDatabase';
+
 export default class App extends Component {
   render() {
     return (
