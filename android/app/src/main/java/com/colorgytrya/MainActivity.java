@@ -1,4 +1,4 @@
-package com.colorgytrya;
+package io.colorgy.trya;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import android.content.Intent;
+import com.oney.gcm.GcmPackage;
 import org.pgsqlite.SQLitePluginPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import me.neo.react.StatusBarPackage;
@@ -35,6 +36,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new GcmPackage())
                 .addPackage(new SQLitePluginPackage(this))
                 .addPackage(mFacebookLoginPackage)
                 .addPackage(new StatusBarPackage(this))

@@ -15,3 +15,19 @@ export default class App extends Component {
     );
   }
 }
+
+var GcmAndroid = require('react-native-gcm-android');
+
+GcmAndroid.addEventListener('register', function(token){
+  console.log('send gcm token to server', token);
+});
+
+GcmAndroid.addEventListener('notification', function(notification){
+  console.log('receive gcm notification', notification);
+});
+
+GcmAndroid.requestPermissions();
+
+window.GcmAndroid = GcmAndroid;
+
+GcmAndroid.checkPermissions((c) => console.log('GCP', c));

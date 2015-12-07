@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 
 /**
  * The react.gradle file registers two tasks: bundleDebugJsAndAssets and bundleReleaseJsAndAssets.
@@ -54,11 +55,12 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.colorgytrya"
+        applicationId "io.colorgy.trya"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -75,6 +77,8 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:0.15.+"
+    compile 'com.google.android.gms:play-services:8.1.0'
+    compile project(':RNGcmAndroid')
     compile project(':react-native-sqlite-storage')
     compile project(':react-native-facebook-login')
     compile project(':react-native-android-statusbar')
